@@ -9,7 +9,7 @@ This script will train and evaluate the Fuzzy CNN on **ALL 8 disease models** fo
 
 Make sure you have:
 1. ✅ Python 3.8+ installed
-2. ✅ All dependencies installed (TensorFlow, NumPy, Pandas, Matplotlib, Seaborn)
+2. ✅ All dependencies installed (TensorFlow NumPy, Pandas, Matplotlib, Seaborn)
 3. ✅ All preprocessed data in `data/processed/` directory
 
 ---
