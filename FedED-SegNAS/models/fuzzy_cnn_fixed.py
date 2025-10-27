@@ -234,16 +234,11 @@ def build_improved_fuzzy_cnn(num_snps, num_classes=2, learning_rate=0.001):
         clipnorm=1.0  # Gradient clipping prevents exploding gradients
     )
     
-    # Compile model with more metrics
+    # Compile model
     model.compile(
         optimizer=optimizer,
         loss='sparse_categorical_crossentropy',
-        metrics=[
-            'accuracy',
-            tf.keras.metrics.Precision(name='precision'),
-            tf.keras.metrics.Recall(name='recall'),
-            tf.keras.metrics.AUC(name='auc')
-        ]
+        metrics=['accuracy']
     )
     
     return model
