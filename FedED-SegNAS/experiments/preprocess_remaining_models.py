@@ -3,6 +3,13 @@
 Preprocess remaining models (model2, model3, model6, model7, model8)
 """
 
+import os
+import sys
+# Add parent directory to path (works from any location)
+script_dir = os.path.dirname(os.path.abspath(__file__))
+parent_dir = os.path.dirname(script_dir)
+sys.path.insert(0, parent_dir)
+
 import numpy as np
 import os
 import sys
@@ -208,7 +215,7 @@ class DataPreprocessor:
 
 
 def main():
-    os.chdir('/app/FedED-SegNAS')
+    # os.chdir('FedED-SegNAS')
     
     # Initialize preprocessor with same config
     preprocessor = DataPreprocessor(
@@ -218,7 +225,7 @@ def main():
     )
     
     # Preprocess remaining models
-    remaining_models = ['model2', 'model3', 'model6', 'model7', 'model8']
+    remaining_models = ['model4']
     successful, failed = preprocessor.preprocess_models(model_names=remaining_models)
     
     if successful > 0:
