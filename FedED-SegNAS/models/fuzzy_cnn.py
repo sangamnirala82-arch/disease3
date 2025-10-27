@@ -54,19 +54,19 @@ class FuzzificationLayer(layers.Layer):
     
     def build(self, input_shape):
         """Initialize trainable parameters for Gaussian membership functions."""
-        # Trainable means for each fuzzy set
+        # FIXED: Initialize means to match SNP genotypes (0, 1, 2) for better starting point
         self.means = self.add_weight(
             name='means',
             shape=(self.num_fuzzy_sets,),
-            initializer=tf.keras.initializers.RandomUniform(minval=0.0, maxval=2.0),
+            initializer=tf.keras.initializers.Constant([0.0, 1.0, 2.0]),
             trainable=True
         )
         
-        # Trainable standard deviations for each fuzzy set
+        # FIXED: Start with narrower standard deviations (0.5) for better discrimination
         self.stds = self.add_weight(
             name='stds',
             shape=(self.num_fuzzy_sets,),
-            initializer=tf.keras.initializers.Ones(),
+            initializer=tf.keras.initializers.Constant([0.5, 0.5, 0.5]),
             trainable=True
         )
         
