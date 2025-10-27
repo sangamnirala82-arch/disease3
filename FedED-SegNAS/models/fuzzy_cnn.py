@@ -85,8 +85,8 @@ class FuzzificationLayer(layers.Layer):
         means_expanded = tf.reshape(self.means, (1, 1, -1))
         stds_expanded = tf.reshape(self.stds, (1, 1, -1))
         
-        # Prevent division by zero
-        stds_expanded = tf.maximum(stds_expanded, 1e-8)
+        # Prevent division by zero with larger epsilon (0.1 instead of 1e-8)
+        stds_expanded = tf.maximum(stds_expanded, 0.1)
         
         # Gaussian membership function
         membership = tf.exp(
