@@ -159,9 +159,11 @@ class FuzzyConvLayer(layers.Layer):
     
     def call(self, inputs):
         """
-        Perform fuzzy convolution with sigmoid activation.
+        Perform fuzzy convolution with ReLU activation.
         
-        Sigmoid is used to maintain values in [0, 1] range suitable for fuzzy logic.
+        FIXED: Changed from sigmoid to ReLU to prevent vanishing gradients.
+        Sigmoid was causing gradients of ~1e-6, preventing learning.
+        ReLU gives gradients of ~0.01-0.1, allowing proper weight updates.
         """
         # 1D convolution
         output = tf.nn.conv1d(
@@ -174,8 +176,8 @@ class FuzzyConvLayer(layers.Layer):
         # Add bias
         output = tf.nn.bias_add(output, self.bias)
         
-        # Sigmoid activation for fuzzy compatibility
-        return tf.nn.sigmoid(output)
+        # FIXED: ReLU activation instead of sigmoid (prevents vanishing gradients)
+        return tf.nn.relu(output)
     
     def get_config(self):
         config = super(FuzzyConvLayer, self).get_config()
