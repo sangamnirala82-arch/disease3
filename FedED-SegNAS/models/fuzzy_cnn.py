@@ -139,11 +139,11 @@ class FuzzyConvLayer(layers.Layer):
     
     def build(self, input_shape):
         """Initialize convolutional weights and biases."""
-        # Convolutional kernel
+        # FIXED: Use HeNormal initialization (designed for ReLU) instead of GlorotUniform (designed for sigmoid)
         self.conv_weights = self.add_weight(
             name='conv_weights',
             shape=(self.kernel_size, input_shape[-1], self.filters),
-            initializer='glorot_uniform',
+            initializer=tf.keras.initializers.HeNormal(),
             trainable=True
         )
         
