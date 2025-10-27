@@ -379,8 +379,10 @@ def build_fuzzy_cnn(num_snps, num_classes=2, learning_rate=0.001):
     Notes:
     ------
     - Loss: sparse_categorical_crossentropy (for integer labels)
-    - Optimizer: Adam
-    - Metrics: accuracy, precision, recall
+    - Optimizer: Adam with gradient clipping (clipnorm=1.0)
+    - Metrics: accuracy
+    
+    FIXED: Added gradient clipping to prevent exploding gradients
     """
     # Create model
     model = FixedFuzzyCNN(num_snps=num_snps, num_classes=num_classes)
@@ -389,9 +391,15 @@ def build_fuzzy_cnn(num_snps, num_classes=2, learning_rate=0.001):
     dummy_input = tf.random.normal((1, num_snps))
     _ = model(dummy_input, training=False)
     
+    # FIXED: Use Adam with gradient clipping
+    optimizer = tf.keras.optimizers.Adam(
+        learning_rate=learning_rate,
+        clipnorm=1.0  # Gradient clipping prevents exploding gradients
+    )
+    
     # Compile model
     model.compile(
-        optimizer=tf.keras.optimizers.Adam(learning_rate=learning_rate),
+        optimizer=optimizer,
         loss='sparse_categorical_crossentropy',
         metrics=['accuracy']
     )
