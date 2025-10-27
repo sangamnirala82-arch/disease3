@@ -35,11 +35,10 @@ class FuzzificationLayer(layers.Layer):
     def build(self, input_shape):
         # FIXED: Initialize means to match SNP genotypes (0, 1, 2)
         # This gives better starting point for learning
-        initial_means = tf.constant([0.0, 1.0, 2.0], dtype=tf.float32)
         self.means = self.add_weight(
             name='means',
             shape=(self.num_fuzzy_sets,),
-            initializer=tf.keras.initializers.Constant(initial_means),
+            initializer=tf.keras.initializers.Constant([0.0, 1.0, 2.0]),
             trainable=True
         )
         
@@ -47,7 +46,7 @@ class FuzzificationLayer(layers.Layer):
         self.stds = self.add_weight(
             name='stds',
             shape=(self.num_fuzzy_sets,),
-            initializer=tf.keras.initializers.Constant(0.5),
+            initializer=tf.keras.initializers.Constant([0.5, 0.5, 0.5]),
             trainable=True
         )
         
