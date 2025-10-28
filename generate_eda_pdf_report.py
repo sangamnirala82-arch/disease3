@@ -490,25 +490,31 @@ class EDAPDFReport:
                 'snp': """Shows ~36% AA, ~48% Aa, ~16% aa, consistent with MAF=0.4 and Hardy-Weinberg Equilibrium 
                 (p²=0.36, 2pq=0.48, q²=0.16). Higher MAF of 0.4 creates more heterozygotes, providing maximum genetic 
                 variation and information content for learning.""",
+                'snp_conclusion': """MAF=0.4 creates 48% heterozygotes - maximum genetic variation providing optimal information for learning.""",
+                'label_conclusion': """Perfect balance maintained; heterogeneous model combines marginal + epistatic effects for easier detection.""",
                 
                 'maf': """Observed mean 0.4008 matches expected 0.4 almost perfectly (99.8% accuracy). The distribution 
                 is tightly centered with minimal spread. MAF=0.4 represents the optimal frequency for detecting genetic 
                 associations due to maximum heterozygosity and allelic variation.""",
+                'maf_conclusion': """99.8% accuracy (0.4008 vs 0.4) at optimal MAF for maximizing heterozygosity and association detection power.""",
                 
                 'correlation': """Despite heterogeneous disease model, SNP-SNP correlations remain near zero (mean ≈ 0.0001). 
                 The heterogeneous effects are in disease risk model (mix of marginal + epistasis), not SNP correlations. 
                 This clean separation allows studying complex disease architectures with controlled SNP structure.""",
+                'correlation_conclusion': """Zero SNP correlation despite complex disease model proves heterogeneity is in risk function, not SNP structure.""",
                 
                 'disease': """<b>Critical difference from Models 1-2:</b> Maximum correlation reaches 0.4605 for SNP1, 
                 visible as a clear peak in the top 20 SNPs plot. The histogram shows right-skewed distribution with 
                 some SNPs showing strong marginal effects. This heterogeneous model combines both main effects (detectable 
                 by GWAS) and epistatic effects (requiring interaction methods). Expected to be easier to learn due to 
                 strong individual SNP signals.""",
+                'disease_conclusion': """Strong marginal effect (r=0.4605) plus epistasis - GWAS will find top SNPs but miss interactions; easiest model.""",
                 
                 'dimensionality': """PCA still captures only ~4.87% variance, but notice slightly better visual separation 
                 in PCA plots compared to Models 1-2. t-SNE shows clearer clustering tendencies. The presence of marginal 
                 effects creates some linear separability, but full disease architecture still requires capturing interactions. 
-                This model validates that algorithms can benefit from both marginal detection and interaction learning."""
+                This model validates that algorithms can benefit from both marginal detection and interaction learning.""",
+                'dimensionality_conclusion': """Despite marginal effects, 4.87% PCA variance shows full disease architecture still requires interaction learning."""
             },
             'model4': {
                 'label': """Perfect 50-50 balance preserved. Model 4 (Threshold epistasis) represents a biologically 
