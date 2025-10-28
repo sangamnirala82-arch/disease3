@@ -475,6 +475,7 @@ class EDAPDFReport:
                 shows symmetric, near-zero distribution. In multiplicative epistasis, disease risk = SNP1 × SNP2 effect, 
                 making individual SNPs non-predictive. This model tests whether the algorithm can detect multiplicative 
                 rather than additive interaction patterns.""",
+                'maf_conclusion': """99.9% accuracy provides consistent foundation for complex multi-mechanism interaction architecture.""",
                 'disease_conclusion': """Pure multiplicative epistasis (max r=0.182) - disease risk emerges from SNP1 × SNP2 effects, not individual SNPs.""",
                 
                 'dimensionality': """PCA captures only ~4.84% variance in first two components, with complete overlap of 
@@ -575,40 +576,49 @@ class EDAPDFReport:
                 'dimensionality': """Lowest PCA variance among all models indicates disease exists entirely in interaction 
                 space, not linear combinations. Complete overlap in PCA plots confirms no linear separability. Even t-SNE 
                 struggles to separate classes, showing heavy mixing. This validates that pure epistasis creates the most 
-                difficult detection scenario, requiring deep interaction learning without relying on marginal effect shortcuts."""
+                difficult detection scenario, requiring deep interaction learning without relying on marginal effect shortcuts.""",
+                'dimensionality_conclusion': """Lowest separability validates pure epistasis creates hardest scenario - disease entirely in interaction space."""
             },
             'model6': {
                 'label': """Perfect 50-50 balance. Model 6 implements XOR-like epistasis - disease appears in specific 
                 SNP combinations (e.g., SNP1=1 AND SNP2=0, or SNP1=0 AND SNP2=1) but not others, mimicking exclusive-OR logic.""",
+                'label_conclusion': """Perfect balance for XOR-like epistasis - disease in exclusive SNP combinations, not individual SNPs.""",
                 
                 'snp': """MAF=0.2 gives standard ~64% AA, ~32% Aa, ~4% aa. XOR patterns operate on these genotypes, with 
                 disease emerging only in mutually exclusive SNP combination states, creating complex interaction patterns.""",
+                'snp_conclusion': """MAF=0.2 genotypes enable XOR pattern where disease appears in mutually exclusive combination states.""",
                 
                 'maf': """Mean MAF 0.2013 shows 99.35% accuracy to expected 0.2. The XOR pattern requires precise MAF 
                 control to ensure symmetric interaction effects - all SNP combinations must have adequate representation 
                 for the exclusive pattern to emerge clearly.""",
+                'maf_conclusion': """99.35% accuracy ensures symmetric XOR interactions with adequate representation of all combination states.""",
                 
                 'correlation': """Near-zero SNP-SNP correlations essential for XOR models. True XOR logic requires 
                 independent inputs - if SNPs were correlated, the exclusive pattern would be obscured. Clean independence 
                 ensures XOR interactions are detectable.""",
+                'correlation_conclusion': """Zero correlation essential for XOR logic - independent inputs required for exclusive interaction patterns.""",
                 
                 'disease': """Maximum correlation of 0.1895 is among the lowest, confirming strongest pure epistasis. 
                 The histogram is flat and symmetric. XOR patterns are notoriously difficult to detect because: (1) no 
                 marginal effects, (2) opposite direction effects in different combinations, (3) requires detecting 
                 specific multi-way interactions. This model tests advanced interaction detection capabilities like 
                 multi-layer neural networks or fuzzy logic systems.""",
+                'disease_conclusion': """Strongest pure epistasis (r=0.1895) with XOR pattern - requires multi-layer networks; not linearly separable.""",
                 
                 'dimensionality': """Very low PCA variance (~4.83%) with complete class overlap. Even t-SNE shows minimal 
                 separation. XOR patterns are known to be non-linearly separable - cannot be solved by linear classifiers 
                 or simple methods. This visualization confirms XOR epistasis creates one of the hardest learning scenarios, 
-                requiring deep architectures with multiple non-linear interaction layers."""
+                requiring deep architectures with multiple non-linear interaction layers.""",
+                'dimensionality_conclusion': """Minimal t-SNE separation confirms XOR epistasis is non-linearly separable - classic hard learning problem."""
             },
             'model7': {
                 'label': """Perfect balance preserved. Model 7 (Complex) combines multiple types of epistatic mechanisms 
                 with strong marginal effects, representing realistic complex disease architecture.""",
+                'label_conclusion': """Perfect balance in complex model combining multiple epistatic mechanisms with strongest marginal effects.""",
                 
                 'snp': """MAF=0.4 produces expected ~36% AA, ~48% Aa, ~16% aa. Complex model leverages high heterozygosity 
                 to create intricate combinations of marginal effects, additive interactions, and non-linear epistasis.""",
+                'snp_conclusion': """High heterozygosity (48% from MAF=0.4) enables intricate combinations of additive, non-linear, and marginal interactions.""",
                 
                 'maf': """Mean MAF 0.3996 shows 99.9% accuracy. Tight distribution critical for complex models to ensure 
                 all interaction components have consistent foundations. High MAF=0.4 provides maximum variation for 
@@ -617,6 +627,7 @@ class EDAPDFReport:
                 'correlation': """Near-zero SNP-SNP correlations maintained despite complex disease model. The complexity 
                 is in disease risk architecture (multiple interaction types), not SNP correlation structure. Clean 
                 independence allows dissecting contributions of different interaction mechanisms.""",
+                'correlation_conclusion': """Zero SNP correlation while maintaining complex disease architecture allows dissecting individual interaction contributions.""",
                 
                 'disease': """<b>Highest correlation of all models: 0.4705 for SNP1.</b> The top 20 SNPs plot shows 
                 clear peaks for top SNPs. Histogram is strongly right-skewed with long tail. This complex model has 
@@ -632,13 +643,16 @@ class EDAPDFReport:
             'model8': {
                 'label': """Perfect 50-50 balance maintained. Model 8 (Nested epistasis) represents hierarchical interaction 
                 structure where some SNP pairs interact, and those interactions further interact with other SNPs.""",
+                'label_conclusion': """Perfect balance for nested epistasis - hierarchical SNP interactions at multiple levels.""",
                 
                 'snp': """MAF=0.4 provides ~36% AA, ~48% Aa, ~16% aa. Nested structure benefits from high heterozygosity 
                 to create multi-level interaction hierarchies: SNP1↔SNP2 interaction, then that result ↔ SNP3, etc.""",
+                'snp_conclusion': """MAF=0.4 heterozygosity supports multi-level nesting: SNP1↔SNP2 interaction, then result ↔ SNP3, etc.""",
                 
                 'maf': """Mean MAF 0.3995 shows 99.875% accuracy. Precise MAF control crucial for nested models to ensure 
                 each hierarchical level has adequate representation. High MAF maximizes interaction detectability at 
                 each nesting level.""",
+                'maf_conclusion': """99.875% accuracy ensures each hierarchical interaction level has adequate genotype representation.""",
                 
                 'correlation': """Near-zero SNP-SNP correlations confirm nested interactions are in disease model, not 
                 correlation structure. This separation allows studying how algorithms learn hierarchical interaction 
@@ -649,12 +663,15 @@ class EDAPDFReport:
                 means some SNPs in the hierarchy have individual predictive power while others only contribute through 
                 interactions. This tests whether algorithms can learn hierarchical feature combinations, essential for 
                 capturing nested biological pathways.""",
+                'disease_conclusion': """Strong marginal (r=0.4624) in hierarchical context - tests algorithm's hierarchical feature learning capability.""",
                 
                 'dimensionality': """PCA variance ~4.89% is typical despite nested structure, showing hierarchical 
                 interactions still create high-dimensional patterns. t-SNE shows good separation, better than pure 
                 epistasis models. The nested structure creates organized interaction patterns that are more learnable 
                 than random epistasis. This model tests whether algorithms can benefit from hierarchical feature learning, 
-                mimicking how deep networks learn features at multiple abstraction levels."""
+                mimicking how deep networks learn features at multiple abstraction levels.""",
+                'dimensionality_conclusion': """Good t-SNE separation (4.89% PCA) shows nested structure creates organized, learnable interaction patterns.""",
+                'dimensionality_conclusion': """Best t-SNE separation despite 4.85% PCA variance shows complex models with marginal+epistatic components are most learnable."""
             }
         }
         
