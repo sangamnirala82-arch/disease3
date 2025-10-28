@@ -399,10 +399,12 @@ class EDAPDFReport:
         interaction space rather than linear combinations. This comprehensive view helps identify which models 
         will be challenging (pure epistasis) versus easier (marginal effects) for the FedED-SegNAS algorithm.
         """
+        cross_model_conclusion = """Models 3, 7, and 8 have strong marginal effects (easy to detect), while models 1, 2, 4, 5, and 6 show pure epistasis patterns (challenging), requiring sophisticated interaction detection methods."""
         self.add_image_with_caption(
             str(cross_model_path),
             "Figure 1: Cross-model comparison showing MAF, SNP-Disease correlation, label balance, and other key metrics across all 8 models",
-            analysis=cross_model_analysis
+            analysis=cross_model_analysis,
+            conclusion=cross_model_conclusion
         )
         
         # Define model-specific analyses
