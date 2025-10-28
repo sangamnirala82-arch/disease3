@@ -674,8 +674,7 @@ class EDAPDFReport:
                 epistasis models. The nested structure creates organized interaction patterns that are more learnable 
                 than random epistasis. This model tests whether algorithms can benefit from hierarchical feature learning, 
                 mimicking how deep networks learn features at multiple abstraction levels.""",
-                'dimensionality_conclusion': """Good t-SNE separation (4.89% PCA) shows nested structure creates organized, learnable interaction patterns.""",
-                'dimensionality_conclusion': """Best t-SNE separation despite 4.85% PCA variance shows complex models with marginal+epistatic components are most learnable."""
+                'dimensionality_conclusion': """Good t-SNE separation (4.89% PCA) shows nested structure creates organized, learnable interaction patterns."""
             }
         }
         
