@@ -635,11 +635,13 @@ class EDAPDFReport:
                 the strongest marginal effects, making it the easiest model for detection. Traditional GWAS would find 
                 top SNPs, but interaction methods would additionally capture epistatic layers. Expected to achieve 
                 highest accuracy (>90%) and serves as positive control for method validation.""",
+                'disease_conclusion': """Strongest marginal effects (r=0.4705) make this easiest model - GWAS finds top SNPs, interaction methods find epistasis; expected >90% accuracy.""",
                 
                 'dimensionality': """Despite strong marginal effects, PCA still captures only ~4.85% variance, showing 
                 disease involves high-dimensional interactions beyond linear combinations. t-SNE shows best separation 
                 of all models, with clearer clustering. This validates that complex models with both marginal and epistatic 
-                components provide multiple pathways for learning, making them more learnable than pure epistasis models."""
+                components provide multiple pathways for learning, making them more learnable than pure epistasis models.""",
+                'dimensionality_conclusion': """Best t-SNE separation despite 4.85% PCA variance shows complex models with marginal+epistatic components are most learnable."""
             },
             'model8': {
                 'label': """Perfect 50-50 balance maintained. Model 8 (Nested epistasis) represents hierarchical interaction 
