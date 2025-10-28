@@ -454,28 +454,34 @@ class EDAPDFReport:
             'model2': {
                 'label': """Perfect 50-50 balance maintained (2000 vs 2000). Model 2 (Multiplicative epistasis) shows 
                 identical class distribution to Model 1, ensuring fair comparison between different epistatic mechanisms.""",
+                'label_conclusion': """Perfect balance maintained for fair comparison of multiplicative vs additive epistasis mechanisms.""",
                 
                 'snp': """Similar to Model 1, shows ~64% AA, ~32% Aa, ~4% aa distribution consistent with MAF=0.2 and 
                 Hardy-Weinberg Equilibrium. The multiplicative epistasis model preserves genotype frequencies while 
                 changing how SNP combinations interact to produce disease.""",
+                'snp_conclusion': """HWE-compliant genotype distribution (MAF=0.2) ensures multiplicative interactions operate on properly simulated genetic data.""",
                 
                 'maf': """Observed mean MAF of 0.1988 is extremely close to expected 0.2 (99.4% accuracy). The tight 
                 distribution in both histogram and box plot confirms consistent allele frequencies. Slight deviation 
                 from 0.2 is within normal sampling variation for 4000 samples.""",
+                'maf_conclusion': """99.4% MAF accuracy (0.1988 vs 0.2) within normal sampling variation, confirming quality simulation.""",
                 
                 'correlation': """Near-zero SNP-SNP correlations (mean ≈ 0.0001) confirm independent SNP generation. 
                 The multiplicative epistasis is encoded in the disease generation mechanism, not in SNP correlation 
                 structure. This independence allows isolation of true multiplicative interaction effects.""",
+                'correlation_conclusion': """Zero SNP-SNP correlation isolates true multiplicative interaction effects from correlation artifacts.""",
                 
                 'disease': """Maximum SNP-disease correlation of only 0.182 confirms pure epistatic pattern. The histogram 
                 shows symmetric, near-zero distribution. In multiplicative epistasis, disease risk = SNP1 × SNP2 effect, 
                 making individual SNPs non-predictive. This model tests whether the algorithm can detect multiplicative 
                 rather than additive interaction patterns.""",
+                'disease_conclusion': """Pure multiplicative epistasis (max r=0.182) - disease risk emerges from SNP1 × SNP2 effects, not individual SNPs.""",
                 
                 'dimensionality': """PCA captures only ~4.84% variance in first two components, with complete overlap of 
                 classes. t-SNE shows slightly better separation than Model 1 but still significant mixing. The multiplicative 
                 interaction creates complex, non-linear decision boundaries that linear methods cannot capture. Deep 
-                architectures with multiplicative interaction layers are essential."""
+                architectures with multiplicative interaction layers are essential.""",
+                'dimensionality_conclusion': """PCA variance 4.84% with class overlap confirms multiplicative interactions require non-linear detection methods."""
             },
             'model3': {
                 'label': """Maintains perfect 50-50 balance. Model 3 (Heterogeneous) combines both marginal effects and 
