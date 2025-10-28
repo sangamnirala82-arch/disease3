@@ -94,7 +94,7 @@ class EDAPDFReport:
         
         # Body text
         self.styles.add(ParagraphStyle(
-            name='BodyText',
+            name='CustomBodyText',
             parent=self.styles['Normal'],
             fontSize=10,
             textColor=colors.HexColor('#333333'),
