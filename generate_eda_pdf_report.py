@@ -345,7 +345,7 @@ class EDAPDFReport:
                         textColor=colors.HexColor('#444444'),
                         leftIndent=15,
                         rightIndent=15,
-                        spaceAfter=5,
+                        spaceAfter=12,
                         backColor=colors.HexColor('#f9f9f9'),
                         borderWidth=1,
                         borderColor=colors.HexColor('#dddddd'),
@@ -353,6 +353,7 @@ class EDAPDFReport:
                     )
                     analysis_para = Paragraph(f"<b>📊 Analysis:</b> {analysis}", analysis_style)
                     self.story.append(analysis_para)
+                    self.story.append(Spacer(1, 0.1*inch))  # Add extra space between analysis and conclusion
                 
                 # Add conclusion if provided
                 if conclusion:
@@ -363,11 +364,11 @@ class EDAPDFReport:
                         textColor=colors.HexColor('#1a1a1a'),
                         leftIndent=15,
                         rightIndent=15,
-                        spaceAfter=10,
+                        spaceAfter=12,
                         backColor=colors.HexColor('#ffffff'),
                         borderWidth=2,
                         borderColor=colors.HexColor('#3498db'),
-                        borderPadding=8,
+                        borderPadding=10,
                         alignment=TA_LEFT
                     )
                     conclusion_para = Paragraph(f"<b>🎯 Key Takeaway: {conclusion}</b>", conclusion_style)
