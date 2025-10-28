@@ -561,6 +561,7 @@ class EDAPDFReport:
                 'maf': """Mean MAF 0.2003 shows 99.85% accuracy. Extremely tight distribution confirms precise simulation. 
                 Pure epistasis models require perfect MAF control because any deviation could introduce spurious marginal 
                 associations, confounding pure interaction effects.""",
+                'maf_conclusion': """99.85% accuracy critical for pure epistasis - any MAF deviation could introduce spurious marginal associations.""",
                 
                 'correlation': """Near-zero correlations (mean ≈ 0.0001) are crucial for pure epistasis models. Any 
                 SNP-SNP correlation could be mistaken for interaction effects. The clean independence validates that 
