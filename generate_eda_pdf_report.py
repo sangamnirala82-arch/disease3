@@ -573,6 +573,7 @@ class EDAPDFReport:
                 would find nothing, p-values would all be non-significant. Only methods explicitly designed for interaction 
                 detection (like Fuzzy CNN, MDR, or other epistasis algorithms) can succeed here. Performance on this 
                 model is the true test of epistasis detection capability.""",
+                'disease_conclusion': """Gold standard pure epistasis (max r=0.2109) - GWAS p-values all non-significant; only interaction methods succeed.""",
                 
                 'dimensionality': """Lowest PCA variance among all models indicates disease exists entirely in interaction 
                 space, not linear combinations. Complete overlap in PCA plots confirms no linear separability. Even t-SNE 
