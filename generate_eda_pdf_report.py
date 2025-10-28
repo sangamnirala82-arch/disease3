@@ -202,7 +202,7 @@ class EDAPDFReport:
         These models show <b>individual SNPs correlated with disease</b> (correlation > 0.3). 
         These SNPs have individual predictive power for disease status. Traditional GWAS methods would detect these SNPs.
         """
-        self.story.append(Paragraph(marginal_text, self.styles['BodyText']))
+        self.story.append(Paragraph(marginal_text, self.styles['CustomBodyText']))
         self.story.append(Spacer(1, 0.1*inch))
         
         marginal_data = [
@@ -233,7 +233,7 @@ class EDAPDFReport:
         No individual SNP predicts disease. <b>Only SNP combinations matter</b>. 
         Traditional GWAS would miss these associations!
         """
-        self.story.append(Paragraph(pure_text, self.styles['BodyText']))
+        self.story.append(Paragraph(pure_text, self.styles['CustomBodyText']))
         self.story.append(Spacer(1, 0.1*inch))
         
         pure_data = [
@@ -451,7 +451,7 @@ class EDAPDFReport:
         conclusion = Paragraph(
             "<b>Overall Data Quality: EXCELLENT ✅</b><br/><br/>"
             "The datasets are <b>PRODUCTION-READY</b> for the FedED-SegNAS framework!",
-            self.styles['BodyText']
+            self.styles['CustomBodyText']
         )
         self.story.append(conclusion)
     
@@ -470,7 +470,7 @@ class EDAPDFReport:
         <b>Marginal + Epistasis:</b> Must capture both main and interaction effects. Hierarchical 
         feature learning is beneficial, and multiple architectural blocks are needed.
         """
-        self.story.append(Paragraph(algo_text, self.styles['BodyText']))
+        self.story.append(Paragraph(algo_text, self.styles['CustomBodyText']))
         self.story.append(Spacer(1, 0.15*inch))
         
         # Expected Performance
@@ -483,7 +483,7 @@ class EDAPDFReport:
         <b>Intermediate:</b> model4 shows threshold effects with moderate difficulty. 
         Expected accuracy: 80-88%.
         """
-        self.story.append(Paragraph(perf_text, self.styles['BodyText']))
+        self.story.append(Paragraph(perf_text, self.styles['CustomBodyText']))
         self.story.append(Spacer(1, 0.15*inch))
         
         # Federated Learning Considerations
@@ -494,7 +494,7 @@ class EDAPDFReport:
         <b>Communication Efficiency:</b> 50 SNPs result in a small feature space. Compressed gradients 
         are feasible with low bandwidth requirements.
         """
-        self.story.append(Paragraph(fed_text, self.styles['BodyText']))
+        self.story.append(Paragraph(fed_text, self.styles['CustomBodyText']))
         self.story.append(Spacer(1, 0.2*inch))
     
     def add_recommendations(self):
@@ -539,7 +539,7 @@ class EDAPDFReport:
         ✅ <b>Perfect for federated learning</b> - Balanced, complete, distributed<br/><br/>
         <b>The datasets are PRODUCTION-READY for the FedED-SegNAS framework!</b>
         """
-        self.story.append(Paragraph(conclusion_text, self.styles['BodyText']))
+        self.story.append(Paragraph(conclusion_text, self.styles['CustomBodyText']))
         self.story.append(Spacer(1, 0.3*inch))
         
         # Quick stats summary
@@ -579,7 +579,7 @@ class EDAPDFReport:
         <b>Analysis Tool:</b> Custom Python EDA Framework<br/>
         <b>Status:</b> ✅ COMPLETE & VALIDATED
         """
-        self.story.append(Paragraph(footer_text, self.styles['BodyText']))
+        self.story.append(Paragraph(footer_text, self.styles['CustomBodyText']))
     
     def generate(self):
         """Generate the complete PDF report"""
