@@ -623,6 +623,7 @@ class EDAPDFReport:
                 'maf': """Mean MAF 0.3996 shows 99.9% accuracy. Tight distribution critical for complex models to ensure 
                 all interaction components have consistent foundations. High MAF=0.4 provides maximum variation for 
                 complex interaction patterns.""",
+                'maf_conclusion': """99.9% accuracy provides consistent foundation for complex multi-mechanism interaction architecture.""",
                 
                 'correlation': """Near-zero SNP-SNP correlations maintained despite complex disease model. The complexity 
                 is in disease risk architecture (multiple interaction types), not SNP correlation structure. Clean 
