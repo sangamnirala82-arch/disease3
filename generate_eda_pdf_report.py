@@ -317,8 +317,8 @@ class EDAPDFReport:
         self.story.append(maf_04_table)
         self.story.append(Spacer(1, 0.2*inch))
         
-    def add_image_with_caption(self, image_path, caption, width=6*inch, analysis=None):
-        """Add image with caption and optional analysis"""
+    def add_image_with_caption(self, image_path, caption, width=6*inch, analysis=None, conclusion=None):
+        """Add image with caption, optional analysis, and conclusion"""
         if os.path.exists(image_path):
             try:
                 # Get image dimensions and calculate height maintaining aspect ratio
@@ -345,7 +345,7 @@ class EDAPDFReport:
                         textColor=colors.HexColor('#444444'),
                         leftIndent=15,
                         rightIndent=15,
-                        spaceAfter=10,
+                        spaceAfter=5,
                         backColor=colors.HexColor('#f9f9f9'),
                         borderWidth=1,
                         borderColor=colors.HexColor('#dddddd'),
@@ -353,6 +353,25 @@ class EDAPDFReport:
                     )
                     analysis_para = Paragraph(f"<b>📊 Analysis:</b> {analysis}", analysis_style)
                     self.story.append(analysis_para)
+                
+                # Add conclusion if provided
+                if conclusion:
+                    conclusion_style = ParagraphStyle(
+                        'ConclusionText',
+                        parent=self.styles['CustomBodyText'],
+                        fontSize=10,
+                        textColor=colors.HexColor('#ffffff'),
+                        leftIndent=15,
+                        rightIndent=15,
+                        spaceAfter=10,
+                        backColor=colors.HexColor('#2c3e50'),
+                        borderWidth=2,
+                        borderColor=colors.HexColor('#3498db'),
+                        borderPadding=8,
+                        alignment=TA_LEFT
+                    )
+                    conclusion_para = Paragraph(f"<b>🎯 Key Takeaway: {conclusion}</b>", conclusion_style)
+                    self.story.append(conclusion_para)
                 
                 self.story.append(Spacer(1, 0.15*inch))
             except Exception as e:
