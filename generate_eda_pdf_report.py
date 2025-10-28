@@ -332,7 +332,7 @@ class EDAPDFReport:
                 self.story.append(img)
                 
                 # Add caption
-                cap = Paragraph(f"<i>{caption}</i>", self.styles['BodyText'])
+                cap = Paragraph(f"<i>{caption}</i>", self.styles['CustomBodyText'])
                 self.story.append(cap)
                 self.story.append(Spacer(1, 0.15*inch))
             except Exception as e:
