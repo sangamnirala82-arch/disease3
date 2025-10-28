@@ -699,7 +699,8 @@ class EDAPDFReport:
             self.add_image_with_caption(
                 str(label_dist_path),
                 f"Figure: {model} - Disease label distribution showing perfect 50-50 balance",
-                analysis=analyses['label']
+                analysis=analyses['label'],
+                conclusion=analyses['label_conclusion']
             )
             
             # SNP distribution
@@ -707,7 +708,8 @@ class EDAPDFReport:
             self.add_image_with_caption(
                 str(snp_dist_path),
                 f"Figure: {model} - SNP genotype frequency distribution (0=AA, 1=Aa, 2=aa)",
-                analysis=analyses['snp']
+                analysis=analyses['snp'],
+                conclusion=analyses['snp_conclusion']
             )
             
             # MAF analysis
@@ -715,7 +717,8 @@ class EDAPDFReport:
             self.add_image_with_caption(
                 str(maf_path),
                 f"Figure: {model} - Minor Allele Frequency (MAF) distribution and box plot",
-                analysis=analyses['maf']
+                analysis=analyses['maf'],
+                conclusion=analyses['maf_conclusion']
             )
             
             # Correlation analysis
@@ -723,7 +726,8 @@ class EDAPDFReport:
             self.add_image_with_caption(
                 str(corr_path),
                 f"Figure: {model} - SNP-SNP correlation heatmap showing independence of SNPs",
-                analysis=analyses['correlation']
+                analysis=analyses['correlation'],
+                conclusion=analyses['correlation_conclusion']
             )
             
             # Disease association
@@ -731,7 +735,8 @@ class EDAPDFReport:
             self.add_image_with_caption(
                 str(disease_path),
                 f"Figure: {model} - SNP-Disease association analysis showing top correlated SNPs",
-                analysis=analyses['disease']
+                analysis=analyses['disease'],
+                conclusion=analyses['disease_conclusion']
             )
             
             # Dimensionality reduction
@@ -740,7 +745,8 @@ class EDAPDFReport:
                 str(dim_red_path),
                 f"Figure: {model} - Dimensionality reduction (PCA and t-SNE) visualization",
                 width=5.5*inch,
-                analysis=analyses['dimensionality']
+                analysis=analyses['dimensionality'],
+                conclusion=analyses['dimensionality_conclusion']
             )
     
     def add_quality_assessment(self):
