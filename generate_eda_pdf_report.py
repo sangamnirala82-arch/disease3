@@ -519,35 +519,43 @@ class EDAPDFReport:
             'model4': {
                 'label': """Perfect 50-50 balance preserved. Model 4 (Threshold epistasis) represents a biologically 
                 realistic scenario where disease manifests only when SNP combinations cross certain thresholds.""",
+                'label_conclusion': """Perfect balance for threshold epistasis model - disease appears when SNP combinations exceed thresholds.""",
                 
                 'snp': """With MAF=0.4, shows expected ~36% AA, ~48% Aa, ~16% aa distribution. Threshold effects operate 
                 on these genotypes, with disease emerging when specific genotype combinations exceed threshold values.""",
+                'snp_conclusion': """MAF=0.4 provides abundant heterozygotes crucial for threshold models where intermediate genotypes trigger disease.""",
                 
                 'maf': """Mean MAF of 0.3990 is 99.75% accurate to expected 0.4. Tight distribution confirms consistent 
                 simulation. The high MAF provides abundant heterozygotes, important for threshold models where intermediate 
                 genotypes play key roles in crossing disease thresholds.""",
+                'maf_conclusion': """99.75% accuracy confirms precise simulation needed for threshold effects to manifest correctly.""",
                 
                 'correlation': """Near-zero SNP-SNP correlations maintained (mean ≈ 0.0001). Threshold epistasis is 
                 encoded in the non-linear disease risk function (if SNP1+SNP2 > threshold, then disease), not in SNP 
                 correlation structure. Clean SNP independence essential for isolating threshold effects.""",
+                'correlation_conclusion': """Independent SNPs essential for isolating threshold effects encoded in non-linear risk functions.""",
                 
                 'disease': """Maximum correlation of 0.2383 is intermediate - higher than pure epistasis models (0.18) 
                 but lower than strong marginal models (>0.46). This suggests weak marginal effects with strong threshold 
                 interactions. The histogram shows slight right skew. Threshold models are challenging because disease 
                 doesn't scale linearly with SNP counts - it appears suddenly when thresholds are crossed, requiring 
                 algorithms to learn sharp decision boundaries.""",
+                'disease_conclusion': """Intermediate correlation (0.2383) indicates weak marginal + strong threshold interactions requiring sharp decision boundaries.""",
                 
                 'dimensionality': """Low PCA variance (~4.82%) indicates threshold effects create complex, non-linear 
                 patterns in high-dimensional space. t-SNE shows some separation but with fuzzy boundaries, reflecting 
                 the threshold nature - clear separation near threshold regions, ambiguity far from thresholds. This 
-                visualization confirms threshold epistasis creates distinct challenges for linear vs non-linear methods."""
+                visualization confirms threshold epistasis creates distinct challenges for linear vs non-linear methods.""",
+                'dimensionality_conclusion': """Low PCA variance (4.82%) reflects threshold-induced non-linearity - separation appears suddenly at threshold crossings."""
             },
             'model5': {
                 'label': """Perfect balance maintained. Model 5 is explicitly designed as Pure Epistasis with zero marginal 
                 effects, making it the ultimate test of interaction detection capability.""",
+                'label_conclusion': """Perfect balance in ultimate pure epistasis test - zero marginal effects, 100% interaction-driven disease.""",
                 
                 'snp': """MAF=0.2 produces ~64% AA, ~32% Aa, ~4% aa distribution. Pure epistasis model ensures disease 
                 risk comes entirely from SNP combinations, with individual genotype frequencies remaining at HWE expectations.""",
+                'snp_conclusion': """HWE-compliant genotypes with MAF=0.2 ensure pure epistasis comes from disease model, not genotype artifacts.""",
                 
                 'maf': """Mean MAF 0.2003 shows 99.85% accuracy. Extremely tight distribution confirms precise simulation. 
                 Pure epistasis models require perfect MAF control because any deviation could introduce spurious marginal 
@@ -556,6 +564,7 @@ class EDAPDFReport:
                 'correlation': """Near-zero correlations (mean ≈ 0.0001) are crucial for pure epistasis models. Any 
                 SNP-SNP correlation could be mistaken for interaction effects. The clean independence validates that 
                 observed epistasis comes from disease model design, not correlation artifacts.""",
+                'correlation_conclusion': """Zero correlation mandatory for pure epistasis validation - ensures interactions are real, not correlation effects.""",
                 
                 'disease': """Maximum correlation of only 0.2109 confirms absolutely no marginal effects. The histogram 
                 is perfectly symmetric and centered near zero. This is the gold standard pure epistasis model - GWAS 
