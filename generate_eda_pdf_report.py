@@ -173,7 +173,7 @@ class EDAPDFReport:
         The analysis validates the simulation quality, confirms expected epistatic patterns, and provides deep 
         insights into the genetic architecture of each model.
         """
-        self.story.append(Paragraph(summary_text, self.styles['BodyText']))
+        self.story.append(Paragraph(summary_text, self.styles['CustomBodyText']))
         self.story.append(Spacer(1, 0.15*inch))
         
         # Key findings
