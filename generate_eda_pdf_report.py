@@ -660,6 +660,7 @@ class EDAPDFReport:
                 'correlation': """Near-zero SNP-SNP correlations confirm nested interactions are in disease model, not 
                 correlation structure. This separation allows studying how algorithms learn hierarchical interaction 
                 patterns from independent SNP inputs.""",
+                'correlation_conclusion': """Independent SNPs prove nested structure is in disease model hierarchy, enabling study of hierarchical learning.""",
                 
                 'disease': """Strong correlation of 0.4624 for SNP2 indicates significant marginal effects in nested 
                 model. The histogram shows right skew similar to Model 3 and 7. Nested epistasis with marginal effects 
