@@ -146,7 +146,7 @@ if __name__ == '__main__':
 - **Training time**: ~6× longer (6 SNP sizes instead of 1)
 - **Estimated time**: 
   - Per model-SNP combination: ~2-5 minutes
-  - Total for all 42 runs: ~2-4 hours (depending on hardware)
+  - Total for all 48 runs: ~2-4 hours (depending on hardware)
 
 ## 🎨 Visualization Improvements
 
