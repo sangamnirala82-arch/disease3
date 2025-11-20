@@ -66,7 +66,31 @@ def run_evaluation(snp_sizes=None):
   - **Panel 2:** Line plot showing accuracy trends across SNP sizes
 - Detailed breakdown of results per SNP size
 
-### 4. Updated Main Execution (Line 320)
+### 4. Added Model4 to Evaluation
+**Before:**
+```python
+MODEL_INFO = {
+    'model1': {...}, 'model2': {...}, 'model3': {...},
+    'model5': {...}, 'model6': {...}, 'model7': {...}, 'model8': {...}
+}
+for model_name in ['model1', 'model2', 'model3', 'model5', 'model6', 'model7', 'model8']:
+```
+
+**After:**
+```python
+MODEL_INFO = {
+    'model1': {...}, 'model2': {...}, 'model3': {...}, 'model4': {...},
+    'model5': {...}, 'model6': {...}, 'model7': {...}, 'model8': {...}
+}
+for model_name in ['model1', 'model2', 'model3', 'model4', 'model5', 'model6', 'model7', 'model8']:
+```
+
+**Changes:**
+- Added model4 entry to MODEL_INFO dictionary (Line 48)
+- Added model4 to the evaluation loop (Line 214)
+- Now evaluates all 8 models instead of only 7
+
+### 5. Updated Main Execution (Line 320)
 **Before:**
 ```python
 results = run_evaluation(snp_size=50)
