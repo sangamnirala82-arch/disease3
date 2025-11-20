@@ -52,8 +52,16 @@ MODEL_INFO = {
 }
 
 
-def find_order2_datasets(model_name, snp_size=50):
-    """Find ONLY order2 datasets (datasets with learnable signal)."""
+def find_order2_datasets(model_name, snp_size=None):
+    """Find ONLY order2 datasets (datasets with learnable signal).
+    
+    Args:
+        model_name: Name of the model (e.g., 'model1')
+        snp_size: Specific SNP size to filter (e.g., 50), or None to get all sizes
+    
+    Returns:
+        List of tuples (order, num_snps, dataset_id, filepath)
+    """
     datasets = []
     model_dir = f'data/processed/{model_name}'
     
@@ -80,7 +88,10 @@ def find_order2_datasets(model_name, snp_size=50):
                         num_snps = int(part.replace('snps', ''))
                         break
                 
-                if num_snps is None or (snp_size and num_snps != snp_size):
+                # Filter by snp_size if specified, otherwise include all
+                if num_snps is None:
+                    continue
+                if snp_size is not None and num_snps != snp_size:
                     continue
                 
                 dataset_id = int(file.replace('dataset_', '').replace('.npz', ''))
