@@ -45,6 +45,7 @@ MODEL_INFO = {
     'model1': {'type': 'Marginal', 'order': 2, 'heritability': 0.10, 'expected_acc': '60-70%'},
     'model2': {'type': 'Marginal', 'order': 2, 'heritability': 0.10, 'expected_acc': '60-70%'},
     'model3': {'type': 'Marginal', 'order': 2, 'heritability': 0.10, 'expected_acc': '60-70%'},
+    'model4': {'type': 'Marginal', 'order': 2, 'heritability': 0.10, 'expected_acc': '60-70%'},
     'model5': {'type': 'Pure Epistasis', 'order': 2, 'heritability': 0.10, 'expected_acc': '60-70%'},
     'model6': {'type': 'Pure Epistasis', 'order': 2, 'heritability': 0.10, 'expected_acc': '60-70%'},
     'model7': {'type': 'Marginal', 'order': 2, 'heritability': 0.10, 'expected_acc': '60-70%'},
