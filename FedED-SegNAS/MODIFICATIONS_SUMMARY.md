@@ -81,9 +81,9 @@ results = run_evaluation(snp_sizes=None)  # None = all available SNP sizes
 
 ### Training Coverage
 When you run the script now, it will train on:
-- **7 models** (model1-3, model5-8)
+- **8 models** (model1-8, including model4)
 - **6 SNP sizes per model** (50, 100, 500, 1000, 2000, 5000)
-- **Total: 42 training runs** (7 models × 6 SNP sizes)
+- **Total: 48 training runs** (8 models × 6 SNP sizes)
 
 ### Output Structure
 For each model:
