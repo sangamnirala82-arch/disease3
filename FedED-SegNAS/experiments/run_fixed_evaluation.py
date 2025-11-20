@@ -211,7 +211,7 @@ def run_evaluation(snp_sizes=None):
     all_results = []
     total_start = time.time()
     
-    for model_name in ['model1', 'model2', 'model3', 'model5', 'model6', 'model7', 'model8']:
+    for model_name in ['model1', 'model2', 'model3', 'model4', 'model5', 'model6', 'model7', 'model8']:
         print(f"\n{'='*80}")
         print(f"🔬 TESTING {model_name.upper()}")
         print(f"{'='*80}")
