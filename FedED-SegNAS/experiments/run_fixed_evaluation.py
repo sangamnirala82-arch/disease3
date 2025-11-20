@@ -265,18 +265,48 @@ def run_evaluation(snp_sizes=None):
         print(f"Min Test Accuracy: {df['test_accuracy'].min():.4f}")
         print(f"Max Test Accuracy: {df['test_accuracy'].max():.4f}")
         
-        # Plot
-        plt.figure(figsize=(12, 6))
-        bars = plt.bar(range(len(df)), df['test_accuracy'], 
+        # Print statistics by SNP size
+        print("\n" + "="*80)
+        print("STATISTICS BY SNP SIZE")
+        print("="*80)
+        for snp_size in sorted(df['num_snps'].unique()):
+            snp_df = df[df['num_snps'] == snp_size]
+            print(f"\nSNP Size {snp_size}:")
+            print(f"  Count: {len(snp_df)}")
+            print(f"  Mean Accuracy: {snp_df['test_accuracy'].mean():.4f} ({snp_df['test_accuracy'].mean()*100:.2f}%)")
+            print(f"  Std Accuracy: {snp_df['test_accuracy'].std():.4f}")
+        
+        # Plot - grouped by model and SNP size
+        fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(16, 6))
+        
+        # Plot 1: Bar chart by model and SNP size
+        df['label'] = df['model_name'] + '\n' + df['num_snps'].astype(str) + ' SNPs'
+        bars = ax1.bar(range(len(df)), df['test_accuracy'], 
                        color=['green' if x >= 0.60 else 'orange' if x >= 0.55 else 'red' 
                               for x in df['test_accuracy']])
-        plt.xticks(range(len(df)), df['model_name'], rotation=45)
-        plt.axhline(y=0.60, color='green', linestyle='--', label='Target (60%)')
-        plt.axhline(y=0.50, color='red', linestyle='--', label='Random (50%)')
-        plt.ylabel('Test Accuracy')
-        plt.title('Fixed Fuzzy CNN Performance (Order2 Datasets)')
-        plt.legend()
-        plt.grid(axis='y', alpha=0.3)
+        ax1.set_xticks(range(len(df)))
+        ax1.set_xticklabels(df['label'], rotation=45, ha='right', fontsize=8)
+        ax1.axhline(y=0.60, color='green', linestyle='--', label='Target (60%)')
+        ax1.axhline(y=0.50, color='red', linestyle='--', label='Random (50%)')
+        ax1.set_ylabel('Test Accuracy')
+        ax1.set_title('Fixed Fuzzy CNN Performance (All SNP Sizes)')
+        ax1.legend()
+        ax1.grid(axis='y', alpha=0.3)
+        
+        # Plot 2: Line plot showing accuracy vs SNP size
+        for model_name in df['model_name'].unique():
+            model_df = df[df['model_name'] == model_name].sort_values('num_snps')
+            ax2.plot(model_df['num_snps'], model_df['test_accuracy'], 
+                    marker='o', label=model_name)
+        ax2.axhline(y=0.60, color='green', linestyle='--', alpha=0.5)
+        ax2.axhline(y=0.50, color='red', linestyle='--', alpha=0.5)
+        ax2.set_xlabel('Number of SNPs')
+        ax2.set_ylabel('Test Accuracy')
+        ax2.set_title('Accuracy vs SNP Size')
+        ax2.legend()
+        ax2.grid(True, alpha=0.3)
+        ax2.set_xscale('log')
+        
         plt.tight_layout()
         
         plot_path = f'results/fixed_evaluation/accuracy_{timestamp}.png'
