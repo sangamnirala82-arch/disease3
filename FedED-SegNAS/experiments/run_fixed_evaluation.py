@@ -288,7 +288,8 @@ def run_evaluation(snp_sizes=None):
 
 
 if __name__ == '__main__':
-    results = run_evaluation(snp_size=50)
+    # Train on ALL SNP sizes: 50, 100, 500, 1000, 2000, 5000
+    results = run_evaluation(snp_sizes=None)  # None = all available SNP sizes
     
     if results:
         print("\n✅ Evaluation successful!")
@@ -296,6 +297,7 @@ if __name__ == '__main__':
         print("  ✅ Vanishing gradient problem FIXED (ReLU activation)")
         print("  ✅ Proper weight initialization (HeNormal for ReLU)")
         print("  ✅ Using datasets with signal (order2 only)")
+        print("  ✅ Trained on ALL SNP sizes (50, 100, 500, 1000, 2000, 5000)")
         print("  ✅ Model is learning (accuracy > 55%)")
     else:
         print("\n❌ No results generated")
