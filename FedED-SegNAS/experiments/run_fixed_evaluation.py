@@ -190,13 +190,21 @@ def train_single_dataset(model_name, filepath, epochs=50):
         }
 
 
-def run_evaluation(snp_size=50):
-    """Run evaluation on all available order2 datasets."""
+def run_evaluation(snp_sizes=None):
+    """Run evaluation on all available order2 datasets across all SNP sizes.
+    
+    Args:
+        snp_sizes: List of SNP sizes to evaluate (e.g., [50, 100, 500]), or None for all
+    """
+    # Default to all SNP sizes if not specified
+    if snp_sizes is None:
+        snp_sizes = [50, 100, 500, 1000, 2000, 5000]
+    
     print("\n" + "="*80)
     print("🧬 FIXED FUZZY CNN EVALUATION - ORDER2 DATASETS ONLY")
     print("="*80)
     print(f"📅 Start Time: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
-    print(f"⚙️  Configuration: epochs=50, snp_size={snp_size}, order=2 ONLY")
+    print(f"⚙️  Configuration: epochs=50, snp_sizes={snp_sizes}, order=2 ONLY")
     print("="*80)
     
     all_results = []
@@ -209,19 +217,25 @@ def run_evaluation(snp_size=50):
         print(f"Type: {MODEL_INFO[model_name]['type']}")
         print(f"Expected Accuracy: {MODEL_INFO[model_name]['expected_acc']}")
         
-        datasets = find_order2_datasets(model_name, snp_size)
-        
-        if not datasets:
-            print(f"⚠️  No order2 datasets found for {model_name}")
-            continue
-        
-        print(f"Found {len(datasets)} order2 datasets")
-        
-        # Train on first dataset of each model
-        for order, snps, did, fp in datasets[:1]:  # Only first dataset
-            result = train_single_dataset(model_name, fp, epochs=50)
-            if result['status'] == 'SUCCESS':
-                all_results.append(result)
+        # Process each SNP size
+        for snp_size in snp_sizes:
+            print(f"\n{'─'*70}")
+            print(f"📊 Processing SNP Size: {snp_size}")
+            print(f"{'─'*70}")
+            
+            datasets = find_order2_datasets(model_name, snp_size)
+            
+            if not datasets:
+                print(f"⚠️  No order2 datasets found for {model_name} with {snp_size} SNPs")
+                continue
+            
+            print(f"Found {len(datasets)} order2 dataset(s) with {snp_size} SNPs")
+            
+            # Train on first dataset of each SNP size
+            for order, snps, did, fp in datasets[:1]:  # Only first dataset per SNP size
+                result = train_single_dataset(model_name, fp, epochs=50)
+                if result['status'] == 'SUCCESS':
+                    all_results.append(result)
     
     total_time = time.time() - total_start
     
