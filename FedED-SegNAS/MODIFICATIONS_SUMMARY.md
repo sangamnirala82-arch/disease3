@@ -167,6 +167,7 @@ The new dual-panel plot provides:
 ## ✨ Summary
 
 ✅ **Successfully modified** to train on all 6 SNP sizes  
+✅ **Added model4** to evaluation (now includes all 8 models)  
 ✅ **Verified** all datasets are discovered correctly  
 ✅ **Enhanced** reporting with SNP-size grouped statistics  
 ✅ **Improved** visualization with trend analysis  
